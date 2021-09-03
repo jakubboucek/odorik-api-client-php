@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 // Uživatelské jméno a heslo pro zabezpečení nahrávání - tyto údaje pak zadáte do Odoriku
 $username = 'odorik';
-$password = 'FxBee2H3nZJ4MGBK';                           // <--- Zvolte si heslo – nesmí zůstat prázdné!
+$password = '';                           // <--- Zvolte si heslo – nesmí zůstat prázdné!
 
 // Adresář pro ukládání nahranách souborů
 $upload_dir = __DIR__ . '/uploads';
@@ -71,8 +71,10 @@ try {
         $error = ($file['error'] ?? null);
         // Zapíšeme konkrétní chybu do logu
         logToFile(
-            'Error file uploading because $_FILE["' . FILE_POST_NAME . '"]["error"] must be 0, but we got: '
-            . (is_string($error) ? $error : gettype($error))
+            [
+                'error' => 'Error file uploading because $_FILE["' . FILE_POST_NAME . '"]["error"] must be 0, but we got: '
+                    . (is_numeric($error) ? $error : gettype($error))
+            ] + $file
         );
         // Chybu ale z bezpečnostních důvodů nevypisujeme
         throw new RuntimeException("Error upload file (maybe file too big)", 400);
@@ -108,7 +110,9 @@ try {
     $target_file = $dir . '/' . urlencode($file['name']);
     if (move_uploaded_file($file['tmp_name'], $target_file) === false) {
         $error = error_get_last()['message'] ?? 'unknown error';
-        throw new LogicException("Unable to move file '{$file['tmp_name']}' to '{$target_file}', raised error: {$error}");
+        throw new LogicException(
+            "Unable to move file '{$file['tmp_name']}' to '{$target_file}', raised error: {$error}"
+        );
     }
 
     /**
@@ -133,10 +137,8 @@ try {
     // ...
 
 
-
-
     // Zapsání výsledku a odeslání potvrzení o přijetí souboru
-    logToFile(['message' => 'Successfully uploaded'] + $_POST);
+    logToFile(['message' => 'Successfully uploaded', 'file' => $target_file, 'ip' => $_SERVER['REMOTE_ADDR']] + $_POST);
     sendResponse(200, 'Successfully uploaded', $_POST);
 } catch (RuntimeException $exception) {
     // Zpracování známé chyby - vypíšeme obsah chyby
