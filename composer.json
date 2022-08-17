@@ -1,0 +1,31 @@
+{
+    "name": "jakubboucek/odorik-api-client",
+    "description": "Odorik.cz API client",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jakub Bouček",
+            "email": "pan@jakubboucek.cz"
+        }
+    ],
+    "require": {
+        "nette/utils": "^3.2",
+        "php-http/discovery": "^1.14",
+        "php-http/message": "^1.13",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0"
+    },
+    "require-dev": {
+        "php-http/curl-client": "^2.2",
+        "slim/psr7": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "JakubBoucek\\OdorikApi\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
