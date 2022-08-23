@@ -31,7 +31,7 @@ class Http
         $this->streamFactory = $streamFactory;
     }
 
-    public static function discover(): Http
+    public static function discover(): self
     {
         return new self(
             Psr18ClientDiscovery::find(),
