@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace JakubBoucek\OdorikApi\Exception;
+namespace JakubBoucek\Odorik\Api\Exception;
 
-use JakubBoucek\OdorikApi\Response\Response;
+use JakubBoucek\Odorik\Api\Response\Response;
 use RuntimeException;
 use Throwable;
 

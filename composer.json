@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "JakubBoucek\\OdorikApi\\": "src/"
+            "JakubBoucek\\Odorik\\Api\\": "src/"
         }
     },
     "config": {

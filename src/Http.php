@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JakubBoucek\OdorikApi;
+namespace JakubBoucek\Odorik\Api;
 
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;

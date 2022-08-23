@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JakubBoucek\OdorikApi\Response;
+namespace JakubBoucek\Odorik\Api\Response;
 
 use Psr\Http\Message\ResponseInterface;
 

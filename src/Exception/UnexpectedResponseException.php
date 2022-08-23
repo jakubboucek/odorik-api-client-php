@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JakubBoucek\OdorikApi\Exception;
+namespace JakubBoucek\Odorik\Api\Exception;
 
 class UnexpectedResponseException extends ResponseException
 {

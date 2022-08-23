@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace JakubBoucek\OdorikApi\Response;
+namespace JakubBoucek\Odorik\Api\Response;
 
-use JakubBoucek\OdorikApi\Exception\UnexpectedResponseException;
-use JakubBoucek\OdorikApi\Helper;
+use JakubBoucek\Odorik\Api\Exception\UnexpectedResponseException;
+use JakubBoucek\Odorik\Api\Helper;
 use Nette\Utils\Json;
 use Psr\Http\Message\ResponseInterface;
 

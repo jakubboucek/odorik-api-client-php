@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace JakubBoucek\OdorikApi;
+namespace JakubBoucek\Odorik\Api;
 
-use JakubBoucek\OdorikApi\Exception\InvalidCredentialsException;
-use JakubBoucek\OdorikApi\Exception\ResponseErrorException;
-use JakubBoucek\OdorikApi\Exception\UnauthenticatedException;
-use JakubBoucek\OdorikApi\Response\ParsedResponse;
-use JakubBoucek\OdorikApi\Response\Response;
-use JakubBoucek\OdorikApi\Response\ResponseError;
+use JakubBoucek\Odorik\Api\Exception\InvalidCredentialsException;
+use JakubBoucek\Odorik\Api\Exception\ResponseErrorException;
+use JakubBoucek\Odorik\Api\Exception\UnauthenticatedException;
+use JakubBoucek\Odorik\Api\Response\ParsedResponse;
+use JakubBoucek\Odorik\Api\Response\Response;
+use JakubBoucek\Odorik\Api\Response\ResponseError;
 
 class Client
 {
