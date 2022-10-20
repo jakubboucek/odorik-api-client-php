@@ -1,8 +1,12 @@
 {
     "name": "jakubboucek/odorik-api-client",
     "description": "Odorik.cz API client",
-    "type": "library",
     "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "odorik",
+        "odorik.cz"
+    ],
     "authors": [
         {
             "name": "Jakub Bouček",
@@ -10,6 +14,7 @@
         }
     ],
     "require": {
+        "php": "^8.0 || ^8.1",
         "nette/utils": "^3.2",
         "php-http/discovery": "^1.14",
         "php-http/message": "^1.13",
@@ -18,6 +23,7 @@
     },
     "require-dev": {
         "php-http/curl-client": "^2.2",
+        "phpstan/phpstan": "^1.8",
         "slim/psr7": "^1.5"
     },
     "autoload": {
@@ -27,5 +33,8 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "scripts": {
+        "phpstan": "phpstan analyse src --level 5"
     }
 }
