@@ -18,7 +18,7 @@ class Response
         $this->response = $response;
     }
 
-    public static function createFromResponse(ResponseInterface $response):ParsedResponse
+    public static function createFromResponse(ResponseInterface $response): ParsedResponse
     {
         $parsed = new self($response);
 
@@ -43,12 +43,12 @@ class Response
 
     public function isJson(): bool
     {
-        return Helper::isContentType($this->getContentType(), 'application/json');
+        return Helper::isSameHttpHeaderValue($this->getContentType(), 'application/json');
     }
 
     public function isPlaintext(): bool
     {
-        return Helper::isContentType($this->getContentType(), 'text/plain');
+        return Helper::isSameHttpHeaderValue($this->getContentType(), 'text/plain');
     }
 
     public function getResponse(): ResponseInterface

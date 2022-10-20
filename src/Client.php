@@ -13,7 +13,7 @@ use JakubBoucek\Odorik\Api\Response\ResponseError;
 
 class Client
 {
-    public const VERSION = 'v0.1-dev';
+    public const VERSION = 'v1.0';
     public const CLIENT_NAME = 'Odorik.cz API client for PHP';
     public const CLIENT_URL = 'https://github.com/jakubboucek/odorik-api-php';
     public const USER_AGENT = self::CLIENT_NAME . ' ' . self::VERSION . ' (' . self::CLIENT_URL . ')';
@@ -59,7 +59,7 @@ class Client
             ->createUri($this->credentials->getUrl() . $endpoint)
             ->withQuery(http_build_query($query));
 
-        $headers += ['User-Agent'=> $this->userAgent];
+        $headers += ['User-Agent' => $this->userAgent];
 
         $request = $this->http->getRequestFactory()
             ->createRequest($method, $uri);

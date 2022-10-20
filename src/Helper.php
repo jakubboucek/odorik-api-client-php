@@ -19,11 +19,17 @@ class Helper
         return rtrim(strtok($header, ';'));
     }
 
-    public static function isContentType($header, ...$expectedContentType): bool
+    /**
+     * Case-insensitive comparing of header value, which is ignoring appended parameters
+     *
+     * @param string $headerValue Value of HTTP Header
+     * @param string ...$expectedValue List of values; return `true` when at least one match
+     */
+    public static function isSameHttpHeaderValue(string $headerValue, string ...$expectedValue): bool
     {
-        $headerBody = self::getHttpHeaderBody($header);
+        $headerBody = self::getHttpHeaderBody($headerValue);
 
-        foreach ($expectedContentType as $contentType) {
+        foreach ($expectedValue as $contentType) {
             if (strcasecmp($headerBody, $contentType) === 0) {
                 return true;
             }
