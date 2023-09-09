@@ -18,6 +18,7 @@ jobs:
         php:
           - "8.0"
           - "8.1"
+          - "8.2"
     name: "PHPStan at PHP ${{ matrix.php }}"
     runs-on: "ubuntu-latest"
 
@@ -31,8 +32,19 @@ jobs:
           php-version: "${{ matrix.php }}"
           coverage: "none"
 
-      - name: "Install dependencies (Composer)"
-        uses: "ramsey/composer-install@v2"
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer update --no-progress
 
       - name: "Statically analyze code (PHPStan)"
-        run: "composer phpstan -- --ansi"
+        run: "composer run phpstan -- --ansi"
