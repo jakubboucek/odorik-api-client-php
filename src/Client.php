@@ -46,6 +46,20 @@ class Client
         return $this->request('GET', $endpoint, $query);
     }
 
+    public function post(string $endpoint, array $query = [], array $formData = []): ParsedResponse
+    {
+        return $this->request('POST', $endpoint, $query, http_build_query($formData), [
+            'Content-Type' => 'application/x-www-form-urlencoded'
+        ]);
+    }
+
+    public function delete(string $endpoint, array $query = [], array $formData = []): ParsedResponse
+    {
+        return $this->request('DELETE', $endpoint, $query, http_build_query($formData), [
+            'Content-Type' => 'application/x-www-form-urlencoded'
+        ]);
+    }
+
     public function request(
         string $method,
         string $endpoint,
